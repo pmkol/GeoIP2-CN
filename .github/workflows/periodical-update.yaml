@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
   schedule: 
-    - cron:  '0 2 */3 * *'
+    - cron:  '0 */6 * * *'
 
 jobs:
   build:
@@ -40,8 +40,8 @@ jobs:
     - name: Obtain CN IP lists
       run: |
         curl -LR -o- "https://raw.githubusercontent.com/misakaio/chnroutes2/master/chnroutes.txt" | grep -v "#" > dist/CN-ip-cidr.txt
-        curl -LR -o- "gaoyifan.github.io/china-operator-ip/china6.txt" | grep -v "#" > dist/china6.txt
-
+        curl -LR -o dist/china6.txt "https://gaoyifan.github.io/china-operator-ip/china6.txt"
+        
     - name: Merge and IP lists and remove duplicates
       run: |
         awk 'FNR==1{print ""}{print}' dist/*.txt > dist/merge.txt
