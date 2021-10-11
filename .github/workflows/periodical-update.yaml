@@ -45,6 +45,7 @@ jobs:
       run: |
         awk 'FNR==1{print ""}{print}' dist/*.txt > dist/merge.txt
         awk '!seen[$0]++' dist/merge.txt > dist/CN-ip-cidr.txt
+        cat dist/CN-ip-cidr.txt | sed "s/^\(.*\)$/  - '\1'/g;1ipayload:" > dist/clash-rule-provider.yml
     - name: Generate GeoIP2 database
       run: |
         CURRENT_DIR=$(pwd)
@@ -68,6 +69,7 @@ jobs:
 
         git add Country.mmdb
         git add CN-ip-cidr.txt
+        git add clash-rule-provider.yml
         git commit -am "Updated at $(date)"
 
         git branch -D release
@@ -84,3 +86,4 @@ jobs:
       run: |
         curl -L https://purge.jsdelivr.net/gh/mkfd/GeoIP2-CN@release/CN-ip-cidr.txt > /dev/null 2>&1
         curl -L https://purge.jsdelivr.net/gh/mkfd/GeoIP2-CN@release/Country.mmdb > /dev/null 2>&1
+        curl -L https://purge.jsdelivr.net/gh/mkfd/GeoIP2-CN@release/clash-rule-provider.yml > /dev/null 2>&1
