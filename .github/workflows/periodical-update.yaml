@@ -84,5 +84,5 @@ jobs:
 
     - name: Purge CDN Cache
       run: |
-        curl ${{ secrets.TXT_CDN_URL }}
-        curl ${{ secrets.MMDB_CDN_URL }}
+        curl -L https://purge.jsdelivr.net/gh/mkfd/GeoIP2-CN@release/CN-ip-cidr.txt > /dev/null 2>&1
+        curl -L https://purge.jsdelivr.net/gh/mkfd/GeoIP2-CN@release/Country.mmdb > /dev/null 2>&1
