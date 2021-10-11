@@ -39,8 +39,7 @@ jobs:
 
     - name: Obtain CN IP lists
       run: |
-        curl -LR -o dist/ipip_net.txt "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt"
-        curl -LR -o dist/chunzhen.txt "https://raw.githubusercontent.com/metowolf/iplist/master/data/country/CN.txt"
+        curl -LR -o dist/chnroutes.txt "https://raw.githubusercontent.com/misakaio/chnroutes2/master/chnroutes.txt"
         curl -LR -o dist/china6.txt "https://gaoyifan.github.io/china-operator-ip/china6.txt"
 
     - name: Merge and IP lists and remove duplicates
@@ -57,7 +56,7 @@ jobs:
 
     - name: Push artifacts to release branch
       run: |
-        git config --local user.email "33897984+Masaiki@users.noreply.github.com"
+        git config --local user.email "mkfd@users.noreply.github.com"
         git config --local user.name "github-action[bot]"
 
         git fetch
