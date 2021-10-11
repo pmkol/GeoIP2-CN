@@ -40,12 +40,11 @@ jobs:
     - name: Obtain CN IP lists
       run: |
         curl -LR -o- "https://raw.githubusercontent.com/misakaio/chnroutes2/master/chnroutes.txt" | grep -v "#" > dist/chnroutes2.txt
-        curl -LR -o- "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt" | grep -v "#" > dist/china6.txt
+        curl -LR -o dist/china6.txt "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt"
     - name: Merge and IP lists and remove duplicates
       run: |
         awk 'FNR==1{print ""}{print}' dist/*.txt > dist/merge.txt
-        awk '!seen[$0]++' dist/merge.txt > dist/CN-ip-cidrall.txt
-        awk 'NF > 0' CN-ip-cidrall.txt > CN-ip-cidra.txt
+        awk '!seen[$0]++' dist/merge.txt > dist/CN-ip-cidr.txt
     - name: Generate GeoIP2 database
       run: |
         CURRENT_DIR=$(pwd)
@@ -55,8 +54,8 @@ jobs:
 
     - name: Push artifacts to release branch
       run: |
-        git config --local user.email "mkfd@users.noreply.github.com"
-        git config --local user.name "github-action[bot]"
+        git config --local user.name "${{ github.actor }}"
+        git config --local user.email "${{ github.actor }}@users.noreply.github.com"
 
         git fetch
         git checkout release
