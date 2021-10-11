@@ -1,4 +1,4 @@
-本项目 Fork 自 [Masaiki/GeoIP2-CN](https://github.com/Masaiki/GeoIP2-CN) 项目（点击访问获取详细介绍），数据源更换为 misakaio/chnroutes2，每3天更新一次。
+本项目 Fork 自 [Masaiki/GeoIP2-CN](https://github.com/Masaiki/GeoIP2-CN) 项目（点击访问获取详细介绍），数据源更换为 [misakaio/chnroutes2](https://github.com/misakaio/chnroutes2)，每6小时更新一次。
 
 ### 📥 下载链接
 | 📦 项目 | 📃 文件 | 🐙 GitHub RAW | 🚀 CDN 加速 | 🔧 适用范围
