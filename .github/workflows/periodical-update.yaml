@@ -66,6 +66,7 @@ jobs:
 
         cp -rf dist/CN-ip-cidr.txt ./
         cp -rf dist/Country.mmdb ./
+        cp -rf dist/clash-rule-provider.yml ./
 
         git add Country.mmdb
         git add CN-ip-cidr.txt
