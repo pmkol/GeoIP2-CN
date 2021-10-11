@@ -43,7 +43,7 @@ jobs:
         curl -LR -o dist/china6.txt "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt"
     - name: Merge and IP lists and remove duplicates
       run: |
-        awk 'FNR==1{print ""}{print}' dist/*.txt > dist/CN-ip-cidr.txt
+        awk 'FNR==1{print""}{print}' dist/*.txt > dist/CN-ip-cidr.txt
         cat dist/CN-ip-cidr.txt | sed "s/^\(.*\)$/  - '\1'/g;1ipayload:" > dist/clash-rule-provider.yml
     - name: Generate GeoIP2 database
       run: |
