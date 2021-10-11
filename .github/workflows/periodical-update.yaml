@@ -44,7 +44,7 @@ jobs:
     - name: Merge and IP lists and remove duplicates
       run: |
         awk 'FNR==1{print ""}{print}' dist/*.txt > dist/merge.txt
-        awk '!/^$/' merge.txt > CN-ip-cidr.txt
+        awk '!/^$/' dist/merge.txt > CN-ip-cidr.txt
         cat dist/CN-ip-cidr.txt | sed "s/^\(.*\)$/  - '\1'/g;1ipayload:" > dist/clash-rule-provider.yml
     - name: Generate GeoIP2 database
       run: |
