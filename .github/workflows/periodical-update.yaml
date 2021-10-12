@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
   schedule: 
-    - cron:  '50 2 * * *'
+    - cron:  '15 3 * * *'
 
 jobs:
   build:
