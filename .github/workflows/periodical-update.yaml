@@ -40,7 +40,7 @@ jobs:
     - name: Obtain CN IP lists
       run: |
         curl -LR -o- "https://raw.githubusercontent.com/misakaio/chnroutes2/master/chnroutes.txt" | grep -v "#" > dist/chnroutes2.txt
-       #curl -LR -o dist/china6.txt "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt"
+        curl -LR -o dist/china6.txt "https://ispip.clang.cn/all_cn_ipv6.txt"
     
     - name: Merge and IP lists and remove duplicates
       run: |
